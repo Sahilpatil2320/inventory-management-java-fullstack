@@ -6,7 +6,9 @@ COPY .mvn .mvn
 COPY mvnw .
 COPY src src
 
-RUN chmod +x mvnw && ./mvnw clean package -DskipTests
+RUN apt-get update && apt-get install -y unzip \
+    && chmod +x mvnw \
+    && ./mvnw clean package -DskipTests
 
 FROM eclipse-temurin:17-jre
 WORKDIR /app
