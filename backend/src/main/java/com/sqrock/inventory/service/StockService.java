@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Optional;
+import java.util.Objects;
 
 /**
  * The heart of the system: every stock change goes through here.
@@ -117,7 +118,7 @@ public class StockService {
     private Optional<StockTransaction> findReplay(String requestId, Long productId) {
         if (requestId == null || requestId.isBlank()) return Optional.empty();
         Optional<StockTransaction> existing = transactions.findByRequestId(requestId.trim());
-        if (existing.isPresent() && !existing.get().getProduct().getId().equals(productId)) {
+        if (existing.isPresent() && !Objects.equals(existing.get().getProduct().getId(), productId)) {
             throw new DuplicateResourceException("This request id was already used for a different transaction");
         }
         return existing;

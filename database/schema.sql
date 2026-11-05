@@ -15,7 +15,7 @@ USE inventory_management;
 -- Application account (do NOT let the app connect as root).
 -- IMPORTANT: replace 'ChangeMe_Str0ng!Pass' with your own password and put the
 -- same value in the DB_PASSWORD environment variable.
-CREATE USER IF NOT EXISTS 'inventory_app'@'localhost' IDENTIFIED BY 'ChangeMe_Str0ng!Pass';
+CREATE USER IF NOT EXISTS 'inventory_app'@'localhost' IDENTIFIED BY 'Sahil@12345';
 GRANT SELECT, INSERT, UPDATE, DELETE ON inventory_management.* TO 'inventory_app'@'localhost';
 FLUSH PRIVILEGES;
 
